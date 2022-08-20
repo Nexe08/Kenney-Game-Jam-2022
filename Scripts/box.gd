@@ -3,6 +3,7 @@ extends KinematicBody2D
 export var Gravity: float = 200
 
 onready var velocity: Vector2 = Vector2.ZERO
+onready var pickedup: bool = false
 
 
 func _physics_process(delta: float) -> void:
@@ -11,10 +12,19 @@ func _physics_process(delta: float) -> void:
 
 
 func _apply_gravity(dt: float) -> void:
+	if pickedup:
+		return
 	velocity.y += Gravity * dt
 
 
 # -- GLOBAL FUNC (GET CALLED IN PHYSICS PROCESS FUNC BY CALLER SCRIPT)
-func pick_up(at_position: Vector2):
+func pickup(at_position: Vector2):
+	pickedup = true
 	global_position.x = lerp(global_position.x, at_position.x, 8 * get_physics_process_delta_time())
 	global_position.y = lerp(global_position.y, at_position.y, 8 * get_physics_process_delta_time())
+
+
+func release(at_position: Vector2):
+	pickedup = false
+	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, "global_position", at_position, .5)
