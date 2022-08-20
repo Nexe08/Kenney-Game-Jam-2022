@@ -75,6 +75,13 @@ pick={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="global"
+2d_physics/layer_2="player"
+2d_physics/layer_3="tilemap"
+2d_physics/layer_6="box"
+
 [physics]
 
 common/enable_pause_aware_picking=true
