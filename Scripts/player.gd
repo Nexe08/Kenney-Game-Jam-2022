@@ -13,14 +13,18 @@ onready var direction: int = -1 # facing direction of character
 
 onready var default_box_detector_position = $BoxDetector.position
 onready var default_box_placing_position = $BoxPlacingPosition.position
+onready var default_holded_box_position = $HoldedBoxPosition.position
 
 onready var box_detector = $BoxDetector
 onready var box_placing_position = $BoxPlacingPosition
 onready var holded_box_position = $HoldedBoxPosition
 onready var sprite = $Sprite
+onready var guide_sprite = $PlacingPositionGuideSprite
 
 
 func _physics_process(delta: float) -> void:
+	guide_sprite.position.x = lerp(guide_sprite.position.x, box_detector.position.x, 8 * delta)
+	guide_sprite.position.y = lerp(guide_sprite.position.y, box_detector.position.y, 8 * delta)
 	_handle_movement(delta)
 	_apply_gravity(delta)
 	_handle_box_holding()
@@ -39,6 +43,7 @@ func _handle_movement(dt: float):
 		sprite.scale.x = 1 * -direction
 		box_detector.position.x = default_box_detector_position.x * -direction
 		box_placing_position.position.x = default_box_placing_position.x * -direction
+		holded_box_position.position.x = default_holded_box_position.x * -direction
 
 
 func _handle_box_holding():
