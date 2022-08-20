@@ -13,9 +13,3 @@ region_rect = Rect2( 270, 72, 18, 54 )
 
 [node name="SpawnPosition" type="Position2D" parent="."]
 position = Vector2( 0, 19 )
-
-[node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
-
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

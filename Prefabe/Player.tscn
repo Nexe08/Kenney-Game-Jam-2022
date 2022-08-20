@@ -38,6 +38,13 @@ collision_mask = 32
 position = Vector2( 1, 0 )
 shape = SubResource( 2 )
 
+[node name="ButtonDetector" type="Area2D" parent="."]
+position = Vector2( -20, -11 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ButtonDetector"]
+position = Vector2( 1, 0 )
+shape = SubResource( 2 )
+
 [node name="HoldedBoxPosition" type="Position2D" parent="."]
 position = Vector2( -20, -11 )
 
@@ -46,3 +53,5 @@ position = Vector2( -20, -11 )
 
 [connection signal="body_entered" from="BoxDetector" to="." method="_on_BoxDetector_body_entered"]
 [connection signal="body_exited" from="BoxDetector" to="." method="_on_BoxDetector_body_exited"]
+[connection signal="area_entered" from="ButtonDetector" to="." method="_on_ButtonDetector_area_entered"]
+[connection signal="area_exited" from="ButtonDetector" to="." method="_on_ButtonDetector_area_exited"]
