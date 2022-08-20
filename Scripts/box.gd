@@ -37,3 +37,7 @@ func release(at_position: Vector2):
 	collision_shape.call_deferred("set_disabled", false)
 	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, "global_position", at_position, .5)
+
+
+func get_bought():
+	queue_free()
