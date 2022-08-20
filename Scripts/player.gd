@@ -1,8 +1,9 @@
 extends KinematicBody2D
 
 
-export var MaxMovementSpeed: float = 100
-export var Gravity: float = 800
+export (float, 0, 10000) var MaxMovementSpeed: float = 100
+export (float, 0, 10000) var MaxJumpForce: float = 200
+export (float, 0, 10000) var Gravity: float = 800
 
 var detected_box: Node = null
 var holded_box: Node = null
@@ -30,6 +31,9 @@ func _handle_movement(dt: float):
 	velocity.x = MaxMovementSpeed * _horizontal_input_direction()
 	
 	direction = _horizontal_input_direction()
+	
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = -MaxJumpForce
 	
 	if direction != 0:
 		sprite.scale.x = 1 * -direction
