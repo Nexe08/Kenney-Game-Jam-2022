@@ -16,6 +16,7 @@ func _physics_process(delta: float) -> void:
 func _apply_gravity(dt: float) -> void:
 	if pickedup:
 		return
+	velocity.x = 0
 	velocity.y += Gravity * dt
 
 

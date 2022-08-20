@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 export (float, 0, 10000) var MaxMovementSpeed: float = 100
-export (float, 0, 10000) var MaxJumpForce: float = 200
+export (float, 0, 10000) var MaxJumpForce: float = 300
 export (float, 0, 10000) var Gravity: float = 800
 
 var detected_box: Node = null
