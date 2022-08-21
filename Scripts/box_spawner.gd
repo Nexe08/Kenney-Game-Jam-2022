@@ -11,11 +11,6 @@ onready var spawn_position = $SpawnPosition
 const max_fule: int = 10
 
 
-func _ready() -> void:
-	fule_indicator.max_value = max_fule
-	fule_indicator.value = fule
-
-
 func spawn_box():
 	if fule <= 0:
 		return
@@ -24,7 +19,8 @@ func spawn_box():
 	instance.global_position = spawn_position.global_position
 	get_parent().add_child(instance)
 	fule -= rand_range(1, 1.7)
-	fule_indicator.value = fule
+	Global.fule_is_update_in_box_spawner(fule, max_fule)
+#	fule_indicator.value = fule
 
 
 func start_production():

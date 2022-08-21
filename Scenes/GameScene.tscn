@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Scripts/game_scene.gd" type="Script" id=1]
 [ext_resource path="res://Assates/Background/tilemap_packed.png" type="Texture" id=6]
@@ -389,6 +389,35 @@ animations = [ {
 [sub_resource type="DynamicFont" id=32]
 font_data = ExtResource( 14 )
 
+[sub_resource type="DynamicFont" id=38]
+font_data = ExtResource( 14 )
+
+[sub_resource type="StyleBoxFlat" id=36]
+bg_color = Color( 0.172549, 0.772549, 0.964706, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=37]
+bg_color = Color( 0.0784314, 0.564706, 0.764706, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.262745, 0.290196, 0.372549, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
 [node name="GameScene" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -553,6 +582,33 @@ margin_right = 63.0
 margin_bottom = 18.0
 custom_fonts/font = SubResource( 32 )
 text = "00"
+align = 1
+valign = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+margin_left = 67.0
+margin_top = 2.0
+margin_right = 283.0
+margin_bottom = 16.0
+text = "                                                      "
+
+[node name="Label4" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+margin_left = 287.0
+margin_right = 431.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 38 )
+text = "                       FULE"
+
+[node name="FuleIndicator" type="ProgressBar" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 435.0
+margin_right = 499.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 64, 16 )
+custom_styles/fg = SubResource( 36 )
+custom_styles/bg = SubResource( 37 )
+value = 100.0
+percent_visible = false
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
 margin_top = 40.0
