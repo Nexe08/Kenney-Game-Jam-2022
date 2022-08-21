@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assates/Fonts/Kenney Future.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -55.5, -33 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "default"
+length = 9.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.2, 2, 2.2, 2.4, 3, 3.2, 3.4, 4, 4.2, 4.4, 5, 5.2, 5.4, 6, 6.2, 6.4, 7 ),
+"transitions": PoolRealArray( 20.393, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 11.3137, 20.393 ),
+"update": 0,
+"values": [ Vector2( -55.5, -1 ), Vector2( -55.5, -33 ), Vector2( -55.5, -17 ), Vector2( -55.5, -17 ), Vector2( -55.5, -33 ), Vector2( -55.5, -17 ), Vector2( -55.5, -17 ), Vector2( -55.5, -33 ), Vector2( -55.5, -17 ), Vector2( -55.5, -17 ), Vector2( -55.5, -33 ), Vector2( -55.5, -17 ), Vector2( -55.5, -17 ), Vector2( -55.5, -33 ), Vector2( -55.5, -17 ), Vector2( -55.5, -17 ), Vector2( -55.5, -33 ), Vector2( -55.5, -17 ), Vector2( -55.5, -1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 1.2, 2, 2.2, 2.4, 3, 3.2, 3.4, 4, 4.2, 4.4, 5, 5.2, 5.4, 6, 6.2, 6.4, 7 ),
+"transitions": PoolRealArray( 20.393, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 11.3137, 20.393 ),
+"update": 0,
+"values": [ Vector2( 1, 1e-05 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1e-05 ) ]
+}
+
+[node name="AnimatedText" type="Label"]
+margin_left = -55.5
+margin_top = -33.0
+margin_right = 56.5
+margin_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 1 )
+text = "DEMO TEXT"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+anims/RESET = SubResource( 3 )
+anims/default = SubResource( 2 )
