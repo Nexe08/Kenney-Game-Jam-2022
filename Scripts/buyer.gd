@@ -4,6 +4,7 @@ extends KinematicBody2D
 export var gravity: float = 500
 
 var velocity := Vector2.ZERO
+var price_pool = [1,1,1,1,1,1,2,2,2,2,2,3,3]
 
 
 func _physics_process(delta: float) -> void:
@@ -15,7 +16,8 @@ func pay_payment():
 	var instance = Global.coin_path.instance()
 	instance.global_position = global_position
 	get_parent().add_child(instance)
-	var payment_amount = rand_range(1, 3)
+	price_pool.shuffle()
+	var payment_amount = price_pool[0]
 	Global.buyer_bought_item(payment_amount)
 
 
