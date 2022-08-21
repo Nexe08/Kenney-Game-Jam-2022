@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assates/coin_spritesheet.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/coine.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 1 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=35]
+animations = [ {
+"frames": [ SubResource( 33 ), SubResource( 34 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.537736, 1 )
+colors = PoolColorArray( 0.956863, 0.705882, 0.105882, 1, 0.996078, 0.894118, 0.505882, 1, 1, 0.980392, 0.917647, 0 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0, 0.428881 ), 0.0, 0.0, 0, 0, Vector2( 0.577206, 1 ), 0.0, -1.08296, 0, 0, Vector2( 1, 0 ), -5.28121, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 40.37
+angular_velocity_random = 0.24
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 3.0
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 5 )
+
+[node name="Coine" type="AnimatedSprite"]
+frames = SubResource( 35 )
+frame = 1
+playing = true
+script = ExtResource( 2 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+show_behind_parent = true
+amount = 96
+local_coords = false
+process_material = SubResource( 8 )

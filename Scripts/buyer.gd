@@ -12,7 +12,11 @@ func _physics_process(delta: float) -> void:
 
 
 func pay_payment():
-	pass
+	var instance = Global.coin_path.instance()
+	instance.global_position = global_position
+	get_parent().add_child(instance)
+	var payment_amount = rand_range(1, 3)
+	Global.buyer_bought_item(payment_amount)
 
 
 func _on_Shop_body_entered(body: Node) -> void:
