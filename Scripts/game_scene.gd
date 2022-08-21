@@ -24,6 +24,7 @@ func set_coint_count(value):
 	coin += value
 	coin_count_text.text = String(coin)
 
+
 func set_fule_value_in_fule_indicator(value, max_value):
 	fule_indicator.value = value
 	fule_indicator.max_value = max_value
@@ -32,4 +33,7 @@ func set_fule_value_in_fule_indicator(value, max_value):
 		return
 	low_in_fule = false
 #		fule_indicator.rect_rotation = rand_range(-.8, 8)
-	
+
+
+func get_coin():
+	return coin

@@ -7,6 +7,7 @@ export (float, 0, 10000) var Gravity: float = 800
 
 var detected_box: Node = null
 var detected_button: Node = null
+var detected_shop: Node = null
 var holded_box: Node = null
 
 onready var velocity: Vector2 = Vector2.ZERO
@@ -30,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	guide_sprite.position.y = lerp(guide_sprite.position.y, box_detector.position.y, 8 * delta)
 	_handle_movement(delta)
 	_apply_gravity(delta)
-	_handle_box_holding_and_button_press()
+	_handle_box_holding_and_button_press_and_buying_fule()
 	velocity = move_and_slide(velocity, Vector2.UP)
 
 
@@ -50,7 +51,7 @@ func _handle_movement(dt: float):
 		holded_box_position.position.x = default_holded_box_position.x * -direction
 
 
-func _handle_box_holding_and_button_press():
+func _handle_box_holding_and_button_press_and_buying_fule():
 	if Input.is_action_just_pressed("pick"):
 		if holded_box == null:
 #			holded_box = detected_box if detected_box != null else null
@@ -58,6 +59,8 @@ func _handle_box_holding_and_button_press():
 				holded_box = detected_box
 			elif detected_button != null:
 				detected_button.press_me()
+			elif detected_shop != null:
+				detected_shop.get_parent().buy_fule()
 		else:
 			holded_box.release(box_placing_position.global_position)
 			holded_box = null
@@ -91,3 +94,12 @@ func _on_ButtonDetector_area_entered(area: Area2D) -> void:
 
 func _on_ButtonDetector_area_exited(area: Area2D) -> void:
 	detected_button = null
+
+
+func _on_ShopDetector_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Shop"):
+		detected_shop = area
+
+
+func _on_ShopDetector_area_exited(area: Area2D) -> void:
+	detected_shop = null

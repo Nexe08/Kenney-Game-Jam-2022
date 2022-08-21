@@ -17,6 +17,19 @@ onready var spawn_position = $SpawnPosition
 const max_fule: int = 10
 
 
+func _ready() -> void:
+	Global.BoxSpawner = self
+
+
+func update_fule_count(value):
+	fule += value
+	Global.fule_is_update_in_box_spawner(fule, max_fule)
+
+
+func get_remaining_fule():
+	return max_fule - fule
+
+
 func spawn_box():
 	if fule <= 0:
 		_spawn_emote(cross_emote_path)

@@ -1,13 +1,10 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Assates/Characters/character_0000.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/buyer.gd" type="Script" id=2]
-[ext_resource path="res://Assates/ui_select.png" type="Texture" id=3]
+[ext_resource path="res://Assates/ui_select.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/fule_seller.gd" type="Script" id=2]
+[ext_resource path="res://Assates/Characters/character_0002.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 12.5, 12.5 )
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -41,7 +38,10 @@ tracks/0/keys = {
 "values": [ Vector2( 0.3125, 0.3125 ), Vector2( 0.396, 0.396 ) ]
 }
 
-[node name="Buyer" type="KinematicBody2D"]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 12.5, 12.5 )
+
+[node name="FuleSeller" type="KinematicBody2D"]
 collision_layer = 0
 collision_mask = 5
 script = ExtResource( 2 )
@@ -52,24 +52,20 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -12 )
-texture = ExtResource( 1 )
-flip_h = true
-
-[node name="Shop" type="Area2D" parent="."]
-position = Vector2( 23, -12 )
-collision_mask = 33
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Shop"]
-shape = SubResource( 2 )
-
-[node name="PlacingPositionGuideSprite" type="Sprite" parent="."]
-position = Vector2( 23, -12 )
-scale = Vector2( 0.396, 0.396 )
 texture = ExtResource( 3 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PlacingPositionGuideSprite"]
+[node name="Shop" type="Area2D" parent="." groups=["Shop"]]
+position = Vector2( -23, -12 )
+
+[node name="PlacingPositionGuideSprite" type="Sprite" parent="Shop"]
+position = Vector2( -1.90735e-06, 0 )
+scale = Vector2( 0.396, 0.396 )
+texture = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Shop/PlacingPositionGuideSprite"]
 autoplay = "defalut"
 anims/RESET = SubResource( 3 )
 anims/defalut = SubResource( 4 )
 
-[connection signal="body_entered" from="Shop" to="." method="_on_Shop_body_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shop"]
+shape = SubResource( 2 )
